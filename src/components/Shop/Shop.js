@@ -9,17 +9,14 @@ const Shop = () => {
     const [cart, setCart] =useState([]);
 
     useEffect( () => {
-      console.log('product loads first')
+      
         fetch('products.json')
         .then(res=>res.json())
-        .then(data => {
-          setProducts(data)
-          // console.log('products loaded')
-        })
+        .then(data => setProducts(data))
     }, [])
 
     useEffect(() => {
-      console.log('local storage')
+    
       const storedCart = getStoredCart();
       const savedCart = [];
 
