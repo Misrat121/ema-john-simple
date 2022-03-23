@@ -33,12 +33,22 @@ const Shop = () => {
       // console.log('local storage finished')
     }, [products])
 
-    const handleAddToCart = (product) =>{
-        // console.log(product)
-        // cart.push(product);
-        const newCart = [...cart, product]
+    const handleAddToCart = (SelectedProduct) =>{
+        console.log(SelectedProduct);
+        let newCart= [];
+        const exists = cart.find(product => product.id === SelectedProduct.id);
+        if(!exists){
+          SelectedProduct.quantity = 1;
+          newCart = [...cart, SelectedProduct];
+        }
+        else{
+          const rest = cart.filter(product => product.id !== SelectedProduct.id);
+          exists.quantity = exists.quantity + 1;
+          newCart = [...rest, exists];
+        }
+         
         setCart(newCart);
-        addToDb(product.id);
+        addToDb(SelectedProduct.id);
 
     }
     return (
