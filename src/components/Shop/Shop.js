@@ -7,7 +7,7 @@ import useProducts from '../../hooks/useProducts';
 
 const Shop = () => {
    const [products, setProducts]=useProducts();
-    const [cart, setCart] =useState([]);
+    const [cart, setCart] =useState([]); 
 
    
 
